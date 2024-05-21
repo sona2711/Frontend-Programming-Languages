@@ -23,9 +23,11 @@ console.log(isPalindrom("hello"))
 
 //assignment 3
 function drawCalendar(year, month){
-     return `Year: ${year}\n Month: ${month}`
+    const date = new Date(year, month - 1)
+  
+     return date.toString()
 }
-console.log(drawCalendar( 2024, "May"))
+console.log(drawCalendar( 2024, 8))
 
 
 
