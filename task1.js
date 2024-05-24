@@ -11,14 +11,15 @@ fizzBuzz(1)
 
 //assignment 2
 function isPalindrom(str){
-     const palindrom = true
-     let newStr = str.split("").reverse().join("") ;
-         if (newStr === str ){ return palindrom}
-         return !palindrom
+    const regex = /[^a-z0-9]/g;
+    let newStr = str.toLowerCase().replace(regex , "");
+    let reverseStr = newStr.split("").reverse().join("") ;
+
+        return  newStr === reverseStr
 }
 console.log(isPalindrom("abba"))
 console.log(isPalindrom("hello"))
-
+console.log(isPalindrom('Sit on a potato pan, Otis'))
 
 
 //assignment 3
@@ -48,47 +49,42 @@ console.log(isDeepEqual(a, b)); // true
 
 
 //assignment 5
-/* k - starting row index
-        m - ending row index
-        l - starting column index
-        n - ending column index
-        i - iterator */
 function spiral(arr){
      let dimensionalArr = []
-     let i, k = 0, l = 0;
-     let m = arr.length;
-     let n = arr[0].length
+     let i, startRowIndex = 0, startColIndex = 0;
+     let endRowIndex = arr.length;
+     let endColIndex = arr[0].length
          if(arr.length == 0 ){
              return dimensionalArr
          }
 
-     while (k < m && l < n) {
+     while (startRowIndex < endRowIndex && startColIndex < endColIndex) {
         // print the first row from the remaining rows
-         for (i = l; i < n; ++i) {
-            dimensionalArr.push(arr[k][i]);
+         for (i = startColIndex; i < endColIndex; ++i) {
+            dimensionalArr.push(arr[startRowIndex][i]);
          }
-        k++;
+         startRowIndex++;
  
         // print the last column from the remaining columns
-         for (i = k; i < m; ++i) {
-            dimensionalArr.push(arr[i][n - 1]);
+         for (i = startRowIndex; i < endRowIndex; ++i) {
+            dimensionalArr.push(arr[i][endColIndex - 1]);
          }
-        n--;
+         endColIndex--;
  
         // print the last row from the remaining rows
-         if (k < m) {
-            for (i = n - 1; i >= l; --i) {
-                dimensionalArr.push(arr[m - 1][i]);
+         if (startRowIndex < endRowIndex) {
+            for (i = endColIndex - 1; i >= startColIndex; --i) {
+                dimensionalArr.push(arr[endRowIndex - 1][i]);
             }
-            m--;
+            endRowIndex--;
          }
  
         // print the first column from the remaining columns
-         if (l < n) {
-            for (i = m - 1; i >= k; --i) {
-                dimensionalArr.push(arr[i][l]);
+         if (startColIndex < endColIndex) {
+            for (i = endRowIndex - 1; i >= startRowIndex; --i) {
+                dimensionalArr.push(arr[i][startColIndex]);
             }
-            l++;
+            startColIndex++;
          }
     }
     return dimensionalArr
