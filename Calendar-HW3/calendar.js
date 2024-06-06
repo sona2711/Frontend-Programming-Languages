@@ -15,7 +15,13 @@ function  getMonthYear() {
         } 
 
     const stringMonthYear = currenteDate.toLocaleDateString("en-US", options);
-    return  monthYear.innerHTML = stringMonthYear;
+
+    if (stringMonthYear){
+        return monthYear.innerHTML = stringMonthYear
+    } else {
+        console.error("Element not found in the DOM");
+    }   
+
 }
   
   
@@ -62,7 +68,11 @@ function  drawCalendar() {
 
     dates += getNextDate(lastDayIndex,year, month);
 
-    return dateWrapper.innerHTML = dates
+    if (dates){
+        return dateWrapper.innerHTML = dates
+    } else {
+        console.error("Element not found in the DOM");
+    } 
 }
 
 getMonthYear();
@@ -84,3 +94,4 @@ nextMonth.addEventListener("click", () =>{
     drawCalendar ();
     })
 
+// module.exports = { getNextDate };
