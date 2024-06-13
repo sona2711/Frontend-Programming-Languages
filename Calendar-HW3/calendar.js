@@ -1,4 +1,4 @@
- window.onload = function () {
+(function() {
     const monthYear = document.getElementById("monthYear");
     const prevMonth = document.getElementById("prevBtn");
     const nextMonth = document.getElementById("nextBtn");
@@ -125,11 +125,7 @@
         render();
     };
 
-    render();
-    localStorage.clear()
-}
 
- 
  function getPrevDates (dayIndex, year, month){
     let acc = "";
     for (let i = dayIndex; i > 0; i--) {
@@ -147,4 +143,10 @@ function getNextDates (dayIndex, year, month){
     }
     return acc;
 };
-module.exports = {getNextDates,getPrevDates}
+
+
+render();
+// localStorage.clear()
+}
+)()
+// module.exports = {getNextDates,getPrevDates}
