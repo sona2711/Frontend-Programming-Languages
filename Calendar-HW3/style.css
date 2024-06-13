@@ -5,6 +5,11 @@
     box-sizing: border-box;
     font-family: "Poppins","sans serif";
     font-weight: 400;
+
+    &:focus-visible{
+        outline: none;
+        box-shadow: none;
+      }
 }
 
 /* styling */
@@ -20,20 +25,19 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    padding: 1rem;
     width: 50vw;
-    min-height: 30vh;
     background-color: #e4e1de;
     border: 1px solid #665e54fd;
     border-radius: 10px;
 }
 
 header, .weekDays {
-    padding: 1rem;
-    width: 50vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+    width: 50vw;
 }
 
 .monthYear {
@@ -55,7 +59,7 @@ header, .weekDays {
 
 .days {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     font-size: medium;
 }
@@ -65,36 +69,83 @@ header, .weekDays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    margin-top: 10px;
 }
 
 .date {
     display:flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    gap: 1rem;
     padding: 10px;
-    margin: auto;
-    width: 30px;
-    height: 30px;
     cursor: pointer;
     font-weight: 600;
-    border-radius:  50%;
     transition: 0.2s;
-
 }
 
-.date:hover,
-.date.active  {
-    background-color: #7c7a77;
-    color: #fcfaf9
-}
-
-.date.inactive {
-    background-color: #e4e1de;
-    color: #7c7a77;
+p {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 10px;
 
     &:hover {
         background-color: #7c7a77;
         color: #e4e1de;
+    }
+}
+
+.active  {
+    background-color: #7c7a77;
+    color: #fcfaf9;
+}
+.inactive {
+    background-color: #e4e1de;
+    color: #7c7a77;
+}
+
+
+/* Notes styling part */
+.note-input {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+.note-text {
+    border: none;
+    border-bottom: 1px solid  #7c7a77;
+    background: none;
+}
+
+.note {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #e91616;
+    font-weight: bold;
+}
+
+.save-note {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #7c7a77;
+        color: #fcfaf9;
+        font-weight: 600;
     }
 }
